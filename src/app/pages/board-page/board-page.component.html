@@ -1,5 +1,4 @@
 <section class="page board-page" *ngIf="gameDetails">
-  <div class="qr">QR HERE</div>
   <div class="board-container">
     <div class="ui game-top">
       <div class="score">
@@ -18,21 +17,30 @@
       </div>
       <div>
         <app-fancy-button
-          [disabled]="!isGameRunning"
+          [disabled]="!gameDetails.isGameRunning"
           (click)="nextTurn()"
-        >Next team</app-fancy-button>
+          >Next team</app-fancy-button
+        >
       </div>
     </div>
     <div class="board">
       <app-word
-        [disabled]="!isGameRunning"
+        [disabled]="!gameDetails.isGameRunning"
         (click)="revealWord(word)"
         *ngFor="let word of gameDetails.words"
         [word]="word"
+        [allRevealed]="allRevealed"
       ></app-word>
     </div>
     <div class="ui game-bottom">
-      <div></div>
+      <div [class.active]="allRevealed"  class="icon-container" (click)="toggleRevealAllCards()">
+        <img
+          class="reveal-icon"
+          src="../../../assets/svg/reveal-icon.svg"
+          alt="reveal-icon"
+          title="Reveal Cards!"
+        />
+      </div>
       <div></div>
       <app-fancy-button (click)="newGame()" [disabled]="false"
         >Next Game</app-fancy-button

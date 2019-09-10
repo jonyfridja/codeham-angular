@@ -1,9 +1,9 @@
 @import '../../../styles/setup/variables.scss';
 
 .nav-list-container {
-  background-color: $bgcolor1;
+  background-color: $bgcolor2;
   padding: 0 20px;
-  clear:both;
+  clear: both;
 }
 
 .nav-list {
@@ -17,9 +17,10 @@
 .nav-item {
   cursor: pointer;
   padding: 1rem;
-  color: $bgcolor2;
+  color: white;
   &:hover {
-    background-color: darken($color1, 10%);
+    color: black;
+    background-color: $color1;
   }
 }
 .nav-item:not(:last-child) {
@@ -28,6 +29,6 @@
 }
 
 .active {
-  background-color: $color1;
   color: black;
+    background-color: $color1;
 }

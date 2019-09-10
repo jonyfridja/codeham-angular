@@ -37,6 +37,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .game-top > * {
@@ -46,4 +47,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon-container {
+  border-radius: 5px;
+  height: 7.125rem;
+  padding-left: 0.25rem;
+}
+.reveal-icon {
+  $reveal-icon-height: 8rem;
+  height: $reveal-icon-height;
+  width: $reveal-icon-height * 1.25;
+}
+.active {
+  box-shadow: 5px 4px 15px black;
+}
+
+.reveal-icon:hover {
+  cursor: pointer;
+  transform: scale(1.15);
 }

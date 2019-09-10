@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WordComponent implements OnInit {
   @Input() word: Word;
   @Input('disabled') isDisabled: boolean;
+  @Input() allRevealed: boolean;
   classes = ['regular'];
   constructor() { }
 

@@ -15,16 +15,13 @@ export class BoardPageComponent implements OnInit {
   wordsLeft = { redTeam: -10, blueTeam: -10 };
   titleMessage = '';
   isGameRunning = false;
+  allRevealed = false;
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
     this.newGame();
   }
   newGame() {
-    // this.gameDetails = null
-    // this.teamClass = null;
-    // this.wordsLeft = { redTeam: -10, blueTeam: -10 };
-    // this.titleMessage = '';
     if (this.gameDetails) {
       this.gameDetails.isGameRunning = false;
       this.save();
@@ -36,6 +33,10 @@ export class BoardPageComponent implements OnInit {
       this.update();
       this.save();
     });
+  }
+
+  toggleRevealAllCards() {
+    this.allRevealed = !this.allRevealed;
   }
 
   save() {
@@ -56,11 +57,11 @@ export class BoardPageComponent implements OnInit {
       if (!revealedWord.isRevealed) {
         const word = this.gameDetails.words.find(w => w === revealedWord);
         word.isRevealed = true;
-        if (!word.whoseTeam || word.whoseTeam !== this.gameDetails.whoseTurn) {
-          this.nextTurn();
-        } else if (word.whoseTeam === 'death') {
+        if (word.whoseTeam === 'death') {
           this.nextTurn();
           this.endGame(this.gameDetails.whoseTurn);
+        } else if (!word.whoseTeam || word.whoseTeam !== this.gameDetails.whoseTurn) {
+          this.nextTurn();
         }
       }
       this.update();

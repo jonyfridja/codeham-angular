@@ -1,9 +1,14 @@
 <div
-[class.disabled]="isDisabled"
   class="card"
+  [class.disabled]="isDisabled && word.whoseTeam !== 'death'"
   [class.revealed]="word.isRevealed"
-  [class.team-blue]="word.whoseTeam === 'blue' && word.isRevealed"
-  [class.team-red]="word.whoseTeam === 'red' && word.isRevealed"
+  [class.team-blue]="
+    (allRevealed || word.isRevealed) && word.whoseTeam === 'blue'
+  "
+  [class.team-red]="
+    (allRevealed || word.isRevealed) && word.whoseTeam === 'red'
+  "
+  [class.death]="(allRevealed || word.isRevealed) && word.whoseTeam === 'death'"
 >
   <div [ngClass]="classes">
     <!-- TODO: adjust these classes so it looks better! -->
