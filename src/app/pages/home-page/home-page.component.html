@@ -1,0 +1,7 @@
+<section class="page home-page">
+  <p></p>
+  <form (submit)="handleSubmit(gameIdInput.value); $event.preventDefault();">
+      <input #gameIdInput type="text" [placeholder]="'Try:' + placeholder" name="gameId">
+      <button type="submit">Go!</button>
+  </form>
+</section>

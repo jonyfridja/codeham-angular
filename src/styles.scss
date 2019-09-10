@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Robotto Regular';
+  src: url('./assets/fonts/Robotto/Roboto-Regular.ttf')
+}
+@font-face {
+  font-family: 'Robotto Bold';
+  src: url('./assets/fonts/Robotto/Roboto-Bold.ttf')
+}
+@font-face {
+  font-family: 'Robotto Light';
+  src: url('./assets/fonts/Robotto/Roboto-Light.ttf')
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Robotto Regular', sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+//  Helpers
+
+.max-width {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  margin-top: 20px;
+}

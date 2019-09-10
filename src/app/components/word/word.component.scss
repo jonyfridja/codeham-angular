@@ -1,0 +1,48 @@
+@import '../../../styles/setup/variables';
+$regular-font-size: 2.5rem;
+
+.card {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-align:center;
+  justify-content: center;
+  width: 200px;
+  height: 114px;
+  border-radius: 5px;
+  background-color: lighten($bgcolor2, 20%);
+  font-size: $regular-font-size;
+  transition: 0.2s all;
+  &:not(.revealed):hover:not(.disabled) {
+    transition: 0.2s all;
+    transform: scale(1.1);
+  }
+}
+
+.revealed {
+  cursor: default;
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+.team-blue {
+  color: white;
+  background-color: $my-blue;
+}
+.team-red {
+  color: white;
+  background-color: $my-red;
+}
+
+.small {
+  font-size: $regular-font-size - 0.4 * $regular-font-size;
+}
+
+.smaller {
+  transform: rotateZ(20deg);
+  font-size: $regular-font-size - 0.4 * $regular-font-size;
+}
+.smallest {
+  transform: rotateZ(20deg);
+  font-size: $regular-font-size - 0.5 * $regular-font-size;
+}

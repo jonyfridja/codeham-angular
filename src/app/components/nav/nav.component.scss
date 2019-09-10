@@ -1,0 +1,33 @@
+@import '../../../styles/setup/variables.scss';
+
+.nav-list-container {
+  background-color: $bgcolor1;
+  padding: 0 20px;
+  clear:both;
+}
+
+.nav-list {
+  height: 3.875rem;
+  line-height: 1.875rem;
+  font-size: 1.875rem;
+
+  display: flex;
+}
+
+.nav-item {
+  cursor: pointer;
+  padding: 1rem;
+  color: $bgcolor2;
+  &:hover {
+    background-color: darken($color1, 10%);
+  }
+}
+.nav-item:not(:last-child) {
+  // border-right: 1px solid black;
+  margin-right: 20px;
+}
+
+.active {
+  background-color: $color1;
+  color: black;
+}

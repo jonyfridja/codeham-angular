@@ -1,0 +1,42 @@
+<section class="page board-page" *ngIf="gameDetails">
+  <div class="qr">QR HERE</div>
+  <div class="board-container">
+    <div class="ui game-top">
+      <div class="score">
+        <div>
+          <span class="team-red">
+            {{ wordsLeft.redTeam }}
+          </span>
+          <span> - </span>
+          <span class="team-blue">
+            {{ wordsLeft.blueTeam }}
+          </span>
+        </div>
+      </div>
+      <div [ngClass]="teamClass">
+        {{ titleMessage | capitalize }}
+      </div>
+      <div>
+        <app-fancy-button
+          [disabled]="!isGameRunning"
+          (click)="nextTurn()"
+        >Next team</app-fancy-button>
+      </div>
+    </div>
+    <div class="board">
+      <app-word
+        [disabled]="!isGameRunning"
+        (click)="revealWord(word)"
+        *ngFor="let word of gameDetails.words"
+        [word]="word"
+      ></app-word>
+    </div>
+    <div class="ui game-bottom">
+      <div></div>
+      <div></div>
+      <app-fancy-button (click)="newGame()" [disabled]="false"
+        >Next Game</app-fancy-button
+      >
+    </div>
+  </div>
+</section>

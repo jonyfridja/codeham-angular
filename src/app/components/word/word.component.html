@@ -1,0 +1,12 @@
+<div
+[class.disabled]="isDisabled"
+  class="card"
+  [class.revealed]="word.isRevealed"
+  [class.team-blue]="word.whoseTeam === 'blue' && word.isRevealed"
+  [class.team-red]="word.whoseTeam === 'red' && word.isRevealed"
+>
+  <div [ngClass]="classes">
+    <!-- TODO: adjust these classes so it looks better! -->
+    {{ word.word | uppercase }}
+  </div>
+</div>

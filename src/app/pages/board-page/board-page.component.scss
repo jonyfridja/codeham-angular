@@ -1,0 +1,49 @@
+@import '../../../styles/setup/variables.scss';
+
+.board-container {
+  border-radius: 20px;
+  width: 1080px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #eee;
+  font-size: 1.5rem;
+}
+
+.board {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-auto-rows: 114px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.team-blue {
+  color: $my-blue;
+}
+
+.team-red {
+  color: $my-red;
+}
+
+.ui {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.game-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.game-bottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-top > * {
+  min-width: 180px;
+}
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
