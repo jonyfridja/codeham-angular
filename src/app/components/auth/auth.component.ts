@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, interval, fromEvent } from 'rxjs';
-import { debounce,  } from 'rxjs/operators';
+import { debounce, } from 'rxjs/operators';
 import { GameService } from 'src/app/services/game.service';
 @Component({
   selector: 'app-auth',
@@ -19,19 +19,14 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   async addAuthListener(event: KeyboardEvent) {
     this.password += event.key;
-    // console.log(event)
-    // console.log('password is', this.password);
-    if(event.code ==="Escape") {
+    if (event.code === "Escape" && event.ctrlKey) {
       this.password = '';
+      console.log('reset txt');
     }
-    const debouncePipe = this.gameService.auth(this.password).pipe(debounce(() => interval(1000)));
-    this.subscription = debouncePipe.subscribe(ans => {
-      if (ans) {
-        console.log('more words enabled');
-      } else {
-        console.log('try again');
-      }
-    })
+    this.subscription = this.gameService.auth(this.password)
+      .subscribe(ans => {
+        if (ans) console.log('more words enabled');
+      })
   }
   ngOnDestroy() {
     document.querySelector('body').removeEventListener('keydown', this.addAuthListener);
