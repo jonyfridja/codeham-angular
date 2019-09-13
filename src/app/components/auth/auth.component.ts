@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   async addAuthListener(event: KeyboardEvent) {
     this.password += event.key;
-    if (event.code === "Escape" && event.ctrlKey) {
+    if (event.code === "Escape") {
       this.password = '';
       console.log('reset txt');
     }
