@@ -11,6 +11,8 @@ import { WordComponent } from './components/word/word.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { FancyButtonComponent } from './components/fancy-button/fancy-button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './components/auth/auth.component';
+import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,15 @@ import { HttpClientModule } from '@angular/common/http';
     AboutPageComponent,
     WordComponent,
     CapitalizePipe,
-    FancyButtonComponent
+    FancyButtonComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

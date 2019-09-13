@@ -14,7 +14,6 @@ export class BoardPageComponent implements OnInit {
   teamClass: object;
   wordsLeft = { redTeam: -10, blueTeam: -10 };
   titleMessage = '';
-  isGameRunning = false;
   allRevealed = false;
   constructor(private gameService: GameService) { }
 
@@ -53,7 +52,7 @@ export class BoardPageComponent implements OnInit {
   }
 
   revealWord(revealedWord: Word) {
-    if (this.gameDetails.isGameRunning) {
+    if (this.gameDetails.isGameRunning && !this.allRevealed) {
       if (!revealedWord.isRevealed) {
         const word = this.gameDetails.words.find(w => w === revealedWord);
         word.isRevealed = true;

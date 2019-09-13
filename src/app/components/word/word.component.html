@@ -9,8 +9,9 @@
     (allRevealed || word.isRevealed) && word.whoseTeam === 'red'
   "
   [class.death]="(allRevealed || word.isRevealed) && word.whoseTeam === 'death'"
+  [class.animate]="shouldAnimate && !word.isRevealed"
 >
-  <div [ngClass]="classes">
+  <div [ngClass]="sizeClasses">
     <!-- TODO: adjust these classes so it looks better! -->
     {{ word.word | uppercase }}
   </div>

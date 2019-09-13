@@ -25,6 +25,7 @@
     </div>
     <div class="board">
       <app-word
+        [animate]="!gameDetails.isGameRunning && allRevealed"
         [disabled]="!gameDetails.isGameRunning"
         (click)="revealWord(word)"
         *ngFor="let word of gameDetails.words"
@@ -48,3 +49,4 @@
     </div>
   </div>
 </section>
+<app-auth></app-auth>

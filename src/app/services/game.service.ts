@@ -5,9 +5,10 @@ import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { StorageService } from './storage.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class GameService {
   private STORAGE_KEY = 'game';
 
@@ -23,6 +24,10 @@ export class GameService {
         `${this.endpoint}${gameId}`
       );
     } else return of(storedGameDetails);
+  }
+
+  auth(password) {
+    return this.http.post<Boolean>(environment.authEndpoint, { password })
   }
 
   saveGameDetails(gameDetails: GameDetails) {

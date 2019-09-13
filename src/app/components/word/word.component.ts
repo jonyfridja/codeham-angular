@@ -7,22 +7,34 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./word.component.scss']
 })
 export class WordComponent implements OnInit {
+
   @Input() word: Word;
   @Input('disabled') isDisabled: boolean;
   @Input() allRevealed: boolean;
-  classes = ['regular'];
+  @Input('animate') shouldAnimate: boolean;
+
+  sizeClasses = ['regular'];
+  containerClasses = {};
   constructor() { }
 
   ngOnInit() {
-    if (this.word.word.length >= 8) {
-      this.classes = ['small']
+
+    if (this.word.word.length <= 4) {
+      this.sizeClasses = ['large']
+    }
+
+    if (this.word.word.length >= 6) {
+      this.sizeClasses = ['medium']
+    }
+    if (this.word.word.length >= 9) {
+      this.sizeClasses = ['small']
     }
 
     if (this.word.word.length >= 11) {
-      this.classes = ['smaller']
+      this.sizeClasses = ['smaller']
     }
     if (this.word.word.length >= 13) {
-      this.classes = ['smallest']
+      this.sizeClasses = ['smallest']
     }
 
   }
