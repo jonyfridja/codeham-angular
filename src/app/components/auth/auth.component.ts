@@ -18,14 +18,18 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   async addAuthListener(event: KeyboardEvent) {
-    this.password += event.key;
+    if (event.key.length === 1) this.password += event.key;
     if (event.code === "Escape") {
       this.password = '';
       console.log('reset txt');
     }
-    this.subscription = this.gameService.auth(this.password)
-      .subscribe(ans => {
-        if (ans) console.log('more words enabled');
+    this.subscription = this.gameService.moreWords(this.password)
+      .subscribe((words: string[]) => {
+        console.log('added letter (to remove current pass press Esc)');
+        if (words) {
+          console.log('Added more words, press next game!');
+          this.gameService.addWords(words);
+        }
       })
   }
   ngOnDestroy() {

@@ -3,6 +3,7 @@ import { GameService } from './../../services/game.service';
 import { Word } from './../../models/Word';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-board-page',
@@ -15,7 +16,8 @@ export class BoardPageComponent implements OnInit {
   wordsLeft = { redTeam: -10, blueTeam: -10 };
   titleMessage = '';
   allRevealed = false;
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService,
+    private utilService: UtilService) { }
 
   ngOnInit() {
     this.newGame();
@@ -29,9 +31,27 @@ export class BoardPageComponent implements OnInit {
     this.gameService.getGameDetails(gameId).subscribe(gameDetails => {
       this.gameDetails = gameDetails;
       this.gameDetails.isGameRunning = true;
+      if (this.gameService.extraWords) this.addExtraWords();
       this.update();
       this.save();
     });
+  }
+
+  addExtraWords() {
+    const { extraWords } = this.gameService;
+    const indexesSwapped = [];
+    extraWords.forEach(word => {
+      const chanceForSwap = 3 / extraWords.length; // 3 is the desired average of words to swap
+      const shouldSwap = Math.random() <= chanceForSwap;
+      if (shouldSwap) {
+        let rndIdx = this.utilService.getRandomInt(0, this.gameDetails.words.length);
+        while (indexesSwapped.some(idx => idx === rndIdx)) {
+          rndIdx = this.utilService.getRandomInt(0, this.gameDetails.words.length);
+        }
+        indexesSwapped.push(rndIdx);
+        this.gameDetails.words[rndIdx].word = word;
+      }
+    })
   }
 
   toggleRevealAllCards() {

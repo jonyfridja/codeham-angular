@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   gameEndpoint: 'http://localhost:3000/api/game/',
-  authEndpoint: 'http://localhost:3000/api/auth/'
+  moreWordsEndpoint: 'http://localhost:3000/api/moreWords/'
 };
 
 /*

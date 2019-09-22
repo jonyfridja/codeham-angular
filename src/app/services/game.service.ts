@@ -1,9 +1,9 @@
 import { GameDetails } from './../models/GameDetails';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { StorageService } from './storage.service';
+import { Word } from '../models/Word';
 
 
 // @Injectable({
@@ -12,6 +12,7 @@ import { StorageService } from './storage.service';
 export class GameService {
   private STORAGE_KEY = 'game';
 
+  extraWords: string[] = null;
   gameKey: string;
   endpoint = environment.gameEndpoint;
   constructor(private http: HttpClient, private storageService: StorageService) {
@@ -26,8 +27,12 @@ export class GameService {
     } else return of(storedGameDetails);
   }
 
-  auth(password) {
-    return this.http.post<Boolean>(environment.authEndpoint, { password })
+  moreWords(password) {
+    return this.http.post<string[]>(environment.moreWordsEndpoint, { password })
+  }
+
+  addWords(words: string[]): void {
+    this.extraWords = words;
   }
 
   saveGameDetails(gameDetails: GameDetails) {
